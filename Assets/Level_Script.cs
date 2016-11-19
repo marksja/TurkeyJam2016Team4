@@ -20,7 +20,7 @@ public class Level_Script : MonoBehaviour {
 	
 	// Called when a projectile is launched
 	// and when a new cannon is reached
-	void New_Location(GameObject new_object) {
+	public void New_Location(GameObject new_object) {
 		active_object = new_object;
 	}
 
@@ -28,7 +28,18 @@ public class Level_Script : MonoBehaviour {
 	void Update () {
 		camera.transform.position = active_object.transform.position + camera_offset;
 		if (Input.GetKeyDown (KeyCode.R)) {
-			active_object = start_cannon;	
+			//Use scale to determine 
+			if(active_object.name == "Cannon 2.0"){
+				active_object.GetComponent<CannonRotation>().active = false;
+			}
+			else if(active_object.name == "Goal"){
+				//Don't reset since we're at the goal
+			}
+			else{
+				Destroy(active_object);
+			}
+			active_object = start_cannon;
+			start_cannon.GetComponent<CannonRotation>().active = true;	
 			/*if(active object is projectile){
 				remove the instance of the object
 			}*/

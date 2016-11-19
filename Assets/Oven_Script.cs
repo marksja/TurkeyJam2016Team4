@@ -16,4 +16,12 @@ public class Oven_Script : MonoBehaviour {
 	void Update () {
 		time += Time.deltaTime;
 	}
+
+	void OnCollisionEnter(Collision collision){
+		GameObject level = GameObject.Find("Level");
+		level.GetComponent<Level_Script>().New_Location(gameObject);
+		Destroy(collision.collider.gameObject); 
+		//Go to victory screen
+		//Calculate score or whatever
+	}
 }

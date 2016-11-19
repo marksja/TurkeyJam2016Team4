@@ -4,9 +4,11 @@ using System.Collections;
 public class CannonRotation : MonoBehaviour
 {
     private int mode = 1;
+    public int barrel_length = 2;
 	public bool active;
 	public GameObject projectile_type;
-    public static int power = 10;
+    public GameObject level;
+    public int power = 10;
     public float angle = 0;
     //public GUIStyle powerBar;
 
@@ -72,12 +74,29 @@ public class CannonRotation : MonoBehaviour
 			}
 
 			if (Input.GetKey (KeyCode.Space) && active) {
-                AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
-                //GameObject projectile = Instantiate (projectile_type);
-                //Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
-                //projectile_physics
+                Vector3 barrel_vector = new Vector3 (Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
+                barrel_vector.Normalize();
+
+				GameObject projectile = Instantiate (projectile_type);
+				projectile.SetActive (true);
+
+				Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
+                projectile.transform.position = transform.position + (barrel_length * barrel_vector);
+				projectile_physics.velocity = barrel_vector * power;
+
+				active = false;
+
+                level.GetComponent<Level_Script>().New_Location(projectile);
+
+                //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
         }
 	        
+    }
+
+    void OnCollisionEnter(Collision collision){
+        active = true;
+        level.GetComponent<Level_Script>().New_Location(gameObject);
+        Destroy(collision.collider.gameObject); 
     }
 }
