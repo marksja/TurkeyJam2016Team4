@@ -39,7 +39,8 @@ public class Level_Script : MonoBehaviour {
 				Destroy(active_object);
 			}
 			active_object = start_cannon;
-			start_cannon.GetComponent<CannonRotation>().active = true;	
+			start_cannon.GetComponent<CannonRotation>().active = true;
+			//bool start_cannon.GetComponent<CannonRotation>().started_chain = false;	
 			/*if(active object is projectile){
 				remove the instance of the object
 			}*/

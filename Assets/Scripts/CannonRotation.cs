@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CannonRotation : MonoBehaviour
 {
-    private int mode = 0;
+    public static bool started_chain;
+    public static int mode = 0;
     private float rotateIncrement = 50f;
     private float powerIncrement = 10f;
     public int barrel_length = 2;
@@ -21,6 +22,7 @@ public class CannonRotation : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        started_chain = false;
         level = GameObject.Find("Level");
     }
 
@@ -62,7 +64,7 @@ public class CannonRotation : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.Space) && active)
+            if ((Input.GetKey(KeyCode.Space) || started_chain) && active)
             {
                 Vector3 barrel_vector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
                 barrel_vector.Normalize();
@@ -77,6 +79,8 @@ public class CannonRotation : MonoBehaviour
                 active = false;
 
                 level.GetComponent<Level_Script>().New_Location(projectile);
+
+                started_chain = true;
 
                 //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
