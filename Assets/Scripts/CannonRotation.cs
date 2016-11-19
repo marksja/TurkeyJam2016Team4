@@ -4,14 +4,22 @@ using System.Collections;
 public class CannonRotation : MonoBehaviour
 {
     private int mode = 1;
-    public int power = 10;
+    public static int power = 10;
     public float angle = 0;
+    //public GUIStyle powerBar;
 
     // Use this for initialization
     void Start()
     {
 
     }
+
+    /*void OnGui() {
+        public Texture2D tex;
+
+        GUI.BeginGroup(new Rect(0, 0, power, 10);
+        GUI.Box(new Rect(0, 0, 20, 10), tex, powerBar);
+    }*/
 
     // Update is called once per frame
     void Update()
