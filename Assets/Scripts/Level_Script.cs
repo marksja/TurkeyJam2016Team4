@@ -26,6 +26,7 @@ public class Level_Script : MonoBehaviour {
 	// and when a new cannon is reached
 	public void New_Location(GameObject new_object) {
 		active_object = new_object;
+		Physics.gravity = new Vector3(0, -9.8F, 0);
 	}
 
     public void OnGUI()
@@ -50,6 +51,7 @@ public class Level_Script : MonoBehaviour {
 			else{
 				Destroy(active_object);
 			}
+			Physics.gravity = new Vector3(0, -9.8F, 0);
 			active_object = start_cannon;
 			start_cannon.GetComponent<CannonRotation>().active = true;
 			/*if(active object is projectile){
