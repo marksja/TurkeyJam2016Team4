@@ -47,11 +47,11 @@ public class CannonRotation : MonoBehaviour
         }
         if (mode == 1 && active)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 angle += rotateIncrement * Time.deltaTime;
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 angle -= rotateIncrement * Time.deltaTime;
             }
