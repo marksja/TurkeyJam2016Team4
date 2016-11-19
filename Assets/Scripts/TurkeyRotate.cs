@@ -10,6 +10,6 @@ public class TurkeyRotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        turkey.transform.Rotate(0,20, 0);
+        turkey.transform.Rotate(0, 0, 1);
 	}
 }
