@@ -46,18 +46,18 @@ public class CannonRotation : MonoBehaviour
         }
         if (mode == 1 && active)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 angle += 5;
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 angle -= 5;
             }
 
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-			if (Input.GetKey(KeyCode.D) && active)
+			if (Input.GetKeyDown(KeyCode.UpArrow) && active)
 			{
 				if (power < 20)
 				{
@@ -65,7 +65,7 @@ public class CannonRotation : MonoBehaviour
 				}
 			}
 
-			if (Input.GetKey(KeyCode.A) && active)
+			if (Input.GetKeyDown(KeyCode.DownArrow) && active)
 			{
 				if (power > 0)
 				{
