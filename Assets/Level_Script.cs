@@ -20,7 +20,7 @@ public class Level_Script : MonoBehaviour {
 	
 	// Called when a projectile is launched
 	// and when a new cannon is reached
-	void New_Location(GameObject new_object) {
+	public void New_Location(GameObject new_object) {
 		active_object = new_object;
 	}
 
