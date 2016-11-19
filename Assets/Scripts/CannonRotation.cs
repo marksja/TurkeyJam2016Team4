@@ -7,12 +7,8 @@ public class CannonRotation : MonoBehaviour
     public int barrel_length = 2;
 	public bool active;
 	public GameObject projectile_type;
-<<<<<<< HEAD
     public GameObject level;
     public int power = 10;
-=======
-    public static int power = 10;
->>>>>>> 068573a63d5a666b98ab1d6a46db99bc01c07e98
     public float angle = 0;
     //public GUIStyle powerBar;
 
@@ -92,7 +88,7 @@ public class CannonRotation : MonoBehaviour
 
                 level.GetComponent<Level_Script>().New_Location(projectile);
 
-                AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
+                //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
         }
 	        
@@ -101,5 +97,6 @@ public class CannonRotation : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         active = true;
         level.GetComponent<Level_Script>().New_Location(gameObject);
+        Destroy(collision.collider.gameObject); 
     }
 }

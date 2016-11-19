@@ -15,6 +15,5 @@ public class Turkey_script : MonoBehaviour {
 
 	// When the turkey collides with the object
 	void OnCollisionEnter(Collision collision){
-		Destroy(gameObject);
 	}
 }
