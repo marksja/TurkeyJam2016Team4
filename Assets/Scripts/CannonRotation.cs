@@ -82,7 +82,8 @@ public class CannonRotation : MonoBehaviour
 
                 l_s.New_Location(projectile);
 
-                //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
+                AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
+                
             }
         }
 
@@ -161,7 +162,25 @@ public class CannonRotation : MonoBehaviour
 
                 l_s.New_Location(projectile);
 
-                //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
+                /*Cannon Shake
+                bool up = true;
+                float timer = 0;
+                if (timer <= 10)
+                {
+                    if (up)
+                    {
+                        transform.Translate(0, 0.5f, 0, Camera.main.transform);
+                        up = false;
+                    }
+                    if (!up)
+                    {
+                        transform.Translate(0, -0.5f, 0, Camera.main.transform);
+                        up = true;
+                    }
+                    timer += Time.deltaTime;
+                }*/
+
+                AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
         }
 	        
