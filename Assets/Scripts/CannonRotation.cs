@@ -67,11 +67,11 @@ public class CannonRotation : MonoBehaviour
 				}
 			}
 
-			if (Input.GetKey (KeyCode.Space) && active) {
-				GameObject projectile = Instantiate (projectile_type);
-				Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
-				projectile_physics
-			}
+			//if (Input.GetKey (KeyCode.Space) && active) {
+			//	GameObject projectile = Instantiate (projectile_type);
+			//	Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
+			//	projectile_physics
+			//}
         }
 	        
     }
