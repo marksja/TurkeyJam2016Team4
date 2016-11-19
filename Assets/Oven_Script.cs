@@ -7,8 +7,10 @@ public class Oven_Script : MonoBehaviour {
 
 	public float time;
 
-	// Use this for initialization
-	void Start () {
+    public AudioClip TurkeySound;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -20,8 +22,9 @@ public class Oven_Script : MonoBehaviour {
 	void OnCollisionEnter(Collision collision){
 		GameObject level = GameObject.Find("Level");
 		level.GetComponent<Level_Script>().New_Location(gameObject);
-		Destroy(collision.collider.gameObject); 
-		//Go to victory screen
-		//Calculate score or whatever
-	}
+		Destroy(collision.collider.gameObject);
+        //AudioSource.PlayClipAtPoint(TurkeySound, transform.position);
+        //Go to victory screen
+        //Calculate score or whatever
+    }
 }

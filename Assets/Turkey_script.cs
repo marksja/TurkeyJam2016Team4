@@ -2,9 +2,11 @@
 using System.Collections;
 
 public class Turkey_script : MonoBehaviour {
+    public AudioClip HitWallSound;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -15,5 +17,6 @@ public class Turkey_script : MonoBehaviour {
 
 	// When the turkey collides with the object
 	void OnCollisionEnter(Collision collision){
-	}
+        //AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
+    }
 }
