@@ -4,11 +4,12 @@ using System.Collections;
 public class CannonRotation : MonoBehaviour
 {
     private int mode = 1;
+    private float rotateIncrement = 50f;
     public int barrel_length = 2;
 	public bool active;
 	public GameObject projectile_type;
     public GameObject level;
-    public int power = 10;
+    public float power = 20;
     public float angle = 0;
     //public GUIStyle powerBar;
 
@@ -48,28 +49,28 @@ public class CannonRotation : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                angle += 5;
+                angle += rotateIncrement * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                angle -= 5;
+                angle -= rotateIncrement * Time.deltaTime;
             }
 
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
 			if (Input.GetKey(KeyCode.D) && active)
 			{
-				if (power < 20)
+				if (power < 30)
 				{
-					power += 1;
+					power += 1f;
 				}
 			}
 
 			if (Input.GetKey(KeyCode.A) && active)
 			{
-				if (power > 0)
+				if (power > 5)
 				{
-					power -= 1;
+					power -= 1f;
 				}
 			}
 

@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Turkey_script : MonoBehaviour {
+    private float angle = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -10,8 +11,9 @@ public class Turkey_script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        angle += 10f;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
 
 	// When the turkey collides with the object
 	void OnCollisionEnter(Collision collision){
