@@ -7,11 +7,11 @@ public class Oven_Script : MonoBehaviour {
 	public int num_cannons;
 	public string next_level;
 	public float time;
-    public Canvas winScreen;
+    public GameObject winScreen;
 
 	// Use this for initialization
-	void Awake () {
-        winScreen.enabled = false;
+	void Start () {
+        //winScreen.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +27,7 @@ public class Oven_Script : MonoBehaviour {
         //Calculate score or whatever
 
         //Display Win Screen
-        winScreen.enabled = true;
+        winScreen.SetActive(true);
 		//SceneManager.LoadScene(next_level);
 
 	}
