@@ -12,7 +12,6 @@ public class CannonRotation : MonoBehaviour
     public GameObject level;
     public float power = 20;
     public float angle = 0;
-<<<<<<< HEAD
 
     private float changeX = 0.1f;
     private float changeY = -0.1f;
@@ -20,12 +19,9 @@ public class CannonRotation : MonoBehaviour
     private float scaleY = 1f;
     private bool shrink = false;
     private bool grow = false;
-    
-=======
     public Texture bar;
     
     private Level_Script l_s;
->>>>>>> origin/master
 
     //audio
     public AudioClip cannonshotSound;
