@@ -5,6 +5,7 @@ public class CannonRotation : MonoBehaviour
 {
     private int mode = 1;
     private float rotateIncrement = 50f;
+    private float powerIncrement = 10f;
     public int barrel_length = 2;
 	public bool active;
 	public GameObject projectile_type;
@@ -58,19 +59,19 @@ public class CannonRotation : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-			if (Input.GetKeyDown(KeyCode.UpArrow) && active)
+			if (Input.GetKey(KeyCode.UpArrow) && active)
 			{
 				if (power < 30)
 				{
-					power += 1f;
+					power += powerIncrement * Time.deltaTime;
 				}
 			}
 
-			if (Input.GetKeyDown(KeyCode.DownArrow) && active)
+			if (Input.GetKey(KeyCode.DownArrow) && active)
 			{
 				if (power > 5)
 				{
-					power -= 1f;
+					power -= powerIncrement * Time.deltaTime;
 				}
 			}
 
