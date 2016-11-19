@@ -20,7 +20,7 @@ public class CannonRotation : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        level = GameObject.Find("Level");
     }
 
     /*void OnGui() {
