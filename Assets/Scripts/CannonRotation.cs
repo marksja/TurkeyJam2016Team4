@@ -10,6 +10,10 @@ public class CannonRotation : MonoBehaviour
     public float angle = 0;
     //public GUIStyle powerBar;
 
+    //audio
+    public AudioClip cannonshotSound;
+
+
     // Use this for initialization
     void Start()
     {
@@ -68,10 +72,11 @@ public class CannonRotation : MonoBehaviour
 			}
 
 			if (Input.GetKey (KeyCode.Space) && active) {
-				GameObject projectile = Instantiate (projectile_type);
-				Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
-				projectile_physics
-			}
+                AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
+                //GameObject projectile = Instantiate (projectile_type);
+                //Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
+                //projectile_physics
+            }
         }
 	        
     }
