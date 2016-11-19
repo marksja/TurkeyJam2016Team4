@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TurkeyRotate : MonoBehaviour {
+public class TurkeyRotate_Slow : MonoBehaviour {
     private GameObject turkey;
     // Use this for initialization
     void Awake() {
@@ -10,6 +10,6 @@ public class TurkeyRotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        turkey.transform.Rotate(0,20, 0);
+        turkey.transform.Rotate(0, 0, 2);
 	}
 }
