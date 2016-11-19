@@ -11,8 +11,14 @@ public class Level_Script : MonoBehaviour {
 
 	private Vector3 camera_offset;
 
+	//Power up info
+	public int puid;
+	public float timer; 
+
 	// Use this for initialization
 	void Start () {
+		puid = 0; 
+		timer = 0;
 		active_object = start_cannon;
 		camera_offset = camera.transform.position - start_cannon.transform.position;
 		camera.transform.position = active_object.transform.position + camera_offset;

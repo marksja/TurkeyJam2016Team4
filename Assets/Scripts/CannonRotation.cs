@@ -13,6 +13,8 @@ public class CannonRotation : MonoBehaviour
     public float power = 20;
     public float angle = 0;
     public Texture bar;
+    
+    private Level_Script l_s;
 
     //audio
     public AudioClip cannonshotSound;
@@ -22,6 +24,7 @@ public class CannonRotation : MonoBehaviour
     void Start()
     {
         level = GameObject.Find("Level");
+        l_s = level.GetComponent<Level_Script>();
     }
 
     public void OnGUI()
@@ -36,6 +39,7 @@ public class CannonRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (mode == 0)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -78,7 +82,7 @@ public class CannonRotation : MonoBehaviour
 
                 active = false;
 
-                level.GetComponent<Level_Script>().New_Location(projectile);
+                l_s.New_Location(projectile);
 
                 //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
@@ -128,7 +132,7 @@ public class CannonRotation : MonoBehaviour
 
 				active = false;
 
-                level.GetComponent<Level_Script>().New_Location(projectile);
+                l_s.New_Location(projectile);
 
                 //AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
@@ -138,7 +142,7 @@ public class CannonRotation : MonoBehaviour
 
     void OnCollisionEnter(Collision collision){
         active = true;
-        level.GetComponent<Level_Script>().New_Location(gameObject);
+        l_s.New_Location(gameObject);
         Destroy(collision.collider.gameObject); 
     }
 }
