@@ -4,6 +4,8 @@ using System.Collections;
 public class CannonRotation : MonoBehaviour
 {
     private int mode = 1;
+	public bool active;
+	public GameObject projectile_type;
     public static int power = 10;
     public float angle = 0;
     //public GUIStyle powerBar;
@@ -36,7 +38,7 @@ public class CannonRotation : MonoBehaviour
             angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
-        if (mode == 1)
+        if (mode == 1 && active)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -48,22 +50,29 @@ public class CannonRotation : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (power < 20)
-            {
-                power += 1;
-            }
-        }
+			if (Input.GetKey(KeyCode.D) && active)
+			{
+				if (power < 20)
+				{
+					power += 1;
+				}
+			}
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (power > 0)
-            {
-                power -= 1;
-            }
+			if (Input.GetKey(KeyCode.A) && active)
+			{
+				if (power > 0)
+				{
+					power -= 1;
+				}
+			}
+
+			if (Input.GetKey (KeyCode.Space) && active) {
+				GameObject projectile = Instantiate (projectile_type);
+				Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
+				projectile_physics
+			}
         }
+	        
     }
 }
