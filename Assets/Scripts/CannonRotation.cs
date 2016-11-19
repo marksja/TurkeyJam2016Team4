@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CannonRotation : MonoBehaviour
 {
-    private int mode = 0;
+    private int mode = 1;
     private float rotateIncrement = 50f;
     private float powerIncrement = 10f;
     public int barrel_length = 2;
@@ -12,7 +12,7 @@ public class CannonRotation : MonoBehaviour
     public GameObject level;
     public float power = 20;
     public float angle = 0;
-    //public GUIStyle powerBar;
+    public Texture bar;
 
     //audio
     public AudioClip cannonshotSound;
@@ -24,12 +24,14 @@ public class CannonRotation : MonoBehaviour
         level = GameObject.Find("Level");
     }
 
-    /*void OnGui() {
-        public Texture2D tex;
+    public void OnGUI()
+    {
+        if (active)
+        {
+            GUI.DrawTexture(new Rect(Camera.main.WorldToScreenPoint(transform.position).x - 25, Camera.main.WorldToScreenPoint(transform.position).y + 20, (power - 4) * 2, 10), bar);
+        }
 
-        GUI.BeginGroup(new Rect(0, 0, power, 10);
-        GUI.Box(new Rect(0, 0, 20, 10), tex, powerBar);
-    }*/
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,7 +52,7 @@ public class CannonRotation : MonoBehaviour
             {
                 if (power < 30)
                 {
-                    power += 1f;
+                    power += 2f;
                 }
             }
 
@@ -58,7 +60,7 @@ public class CannonRotation : MonoBehaviour
             {
                 if (power > 5)
                 {
-                    power -= 1f;
+                    power -= 2f;
                 }
             }
 

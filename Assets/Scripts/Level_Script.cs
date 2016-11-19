@@ -24,8 +24,8 @@ public class Level_Script : MonoBehaviour {
 		active_object = new_object;
 	}
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 		camera.transform.position = active_object.transform.position + camera_offset;
 		if (Input.GetKeyDown (KeyCode.R)) {
 			//Use scale to determine 
