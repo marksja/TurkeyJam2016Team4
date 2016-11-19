@@ -11,6 +11,6 @@ public class TurkeyRotate_Fast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Rotate(0, 0, 10);
+        this.transform.Rotate(0, 0, 360 * 3 * Time.deltaTime);
     }
 }
