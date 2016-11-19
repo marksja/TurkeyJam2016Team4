@@ -22,8 +22,8 @@ public class Oven_Script : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-        //AudioSource.PlayClipAtPoint(TurkeySound, transform.position);
-        
+        AudioSource.PlayClipAtPoint(TurkeySound, transform.position);
+
         GameObject level = GameObject.Find("Level");
 		level.GetComponent<Level_Script>().New_Location(gameObject);
 		Destroy(collision.collider.gameObject);

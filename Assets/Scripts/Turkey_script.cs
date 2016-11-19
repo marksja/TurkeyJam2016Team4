@@ -19,6 +19,14 @@ public class Turkey_script : MonoBehaviour {
 
 	// When the turkey collides with the object
 	void OnCollisionEnter(Collision collision){
-        AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
+        if(collision.collider.gameObject.name == "Goal"){
+
+        }
+        else if(collision.collider.gameObject.name == "Cannon 2.0"){
+
+        }
+        else{
+            AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
+        }
     }
 }
