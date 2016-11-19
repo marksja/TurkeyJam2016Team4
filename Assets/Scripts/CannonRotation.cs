@@ -78,7 +78,6 @@ public class CannonRotation : MonoBehaviour
 			}
 
 			if (Input.GetKey (KeyCode.Space) && active) {
-<<<<<<< HEAD
                 Vector3 barrel_vector = new Vector3 (Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
                 barrel_vector.Normalize();
 
@@ -92,14 +91,9 @@ public class CannonRotation : MonoBehaviour
 				active = false;
 
                 level.GetComponent<Level_Script>().New_Location(projectile);
-			}
-=======
+
                 AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
-                //GameObject projectile = Instantiate (projectile_type);
-                //Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
-                //projectile_physics
             }
->>>>>>> 068573a63d5a666b98ab1d6a46db99bc01c07e98
         }
 	        
     }
