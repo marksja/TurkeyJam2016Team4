@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 2800cc6c76856124ab1f35066d6044f7
-timeCreated: 1479563716
+timeCreated: 1479588876
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - winScreen: {instanceID: 0}
+  - TurkeySound: {fileID: 8300000, guid: 3d8fc95537a79cf4089991c6b4f58e1b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
