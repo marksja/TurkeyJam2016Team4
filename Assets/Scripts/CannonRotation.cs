@@ -12,7 +12,14 @@ public class CannonRotation : MonoBehaviour
     public GameObject level;
     public float power = 20;
     public float angle = 0;
-    public Texture bar;
+
+    private float changeX = 0.1f;
+    private float changeY = -0.1f;
+    private float scaleX = 1f;
+    private float scaleY = 1f;
+    private bool shrink = false;
+    private bool grow = false;
+    
 
     //audio
     public AudioClip cannonshotSound;
@@ -24,18 +31,10 @@ public class CannonRotation : MonoBehaviour
         level = GameObject.Find("Level");
     }
 
-    public void OnGUI()
-    {
-        if (active)
-        {
-            GUI.DrawTexture(new Rect(Camera.main.WorldToScreenPoint(transform.position).x - 25, Camera.main.WorldToScreenPoint(transform.position).y + 20, (power - 4) * 2, 10), bar);
-        }
-
-    }
-
     // Update is called once per frame
     void Update()
     {
+
         if (mode == 0)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -115,7 +114,36 @@ public class CannonRotation : MonoBehaviour
 				}
 			}
 
-			if (Input.GetKey (KeyCode.Space) && active) {
+            if (Input.GetKey(KeyCode.Space) && active) {
+                /*shrink = true;
+                int count = 0;
+                while (shrink || grow)
+                { 
+                    if (shrink)
+                    {
+                        scaleX -= changeX;
+                        scaleY -= changeY;
+                        transform.localScale = new Vector2(scaleX, scaleY);
+                        if(count == 40)
+                        {
+                            grow = true;
+                            shrink = false;
+                        }
+                    }
+
+                    if (grow)
+                    {
+                        scaleX += changeX;
+                        scaleY += changeY;
+                        transform.localScale = new Vector2(scaleX, scaleY);
+                        if (count == 80)
+                        {
+                            grow = false;
+                        }
+                    }
+                    count++;
+                }*/
+
                 Vector3 barrel_vector = new Vector3 (Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
                 barrel_vector.Normalize();
 

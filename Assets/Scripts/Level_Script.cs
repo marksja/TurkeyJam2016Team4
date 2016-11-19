@@ -11,12 +11,15 @@ public class Level_Script : MonoBehaviour {
 
 	private Vector3 camera_offset;
 
+    public Texture bar;
+
 	// Use this for initialization
 	void Start () {
 		active_object = start_cannon;
-		camera_offset = camera.transform.position - start_cannon.transform.position;
+        camera_offset = new Vector3(0, 0, -10);
+        // camera.transform.position - start_cannon.transform.position;
 		camera.transform.position = active_object.transform.position + camera_offset;
-		start_cannon.GetComponent<CannonRotation>().is_start = true;
+		//start_cannon.GetComponent<CannonRotation>().is_start = true;
 	}
 	
 	// Called when a projectile is launched
@@ -24,6 +27,14 @@ public class Level_Script : MonoBehaviour {
 	public void New_Location(GameObject new_object) {
 		active_object = new_object;
 	}
+
+    public void OnGUI()
+    {
+        if (active_object.name == "Cannon 2.0")
+        {
+            GUI.DrawTexture(new Rect(Screen.width / 2 - 32 - camera_offset.x, (Screen.height / 2) + 30 - camera_offset.y, (active_object.GetComponent<CannonRotation>().power - 4) * 2, 10), bar);
+        }
+    }
 
     // Update is called once per frame
     void Update () {
