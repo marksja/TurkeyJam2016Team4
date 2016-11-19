@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: d75f1db4e6f6100449a09ca2da78ebac
-timeCreated: 1479588970
+guid: 832dd52c6a319364ebf32e52ffdbfe3f
+timeCreated: 1479583708
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - HitWallSound: {fileID: 8300000, guid: 1e609ead640117f40857f120be05851c, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
