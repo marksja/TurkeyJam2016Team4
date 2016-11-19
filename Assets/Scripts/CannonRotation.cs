@@ -69,8 +69,12 @@ public class CannonRotation : MonoBehaviour
 
 			if (Input.GetKey (KeyCode.Space) && active) {
 				GameObject projectile = Instantiate (projectile_type);
+				projectile.SetActive (true);
 				Rigidbody projectile_physics = projectile.GetComponent<Rigidbody> ();
-				projectile_physics
+				projectile_physics.velocity = (Quaternion.AngleAxis (angle, Vector3.right) * Vector3.forward);
+				projectile_physics.velocity.Normalize ();
+				projectile_physics.velocity *= power * 100;
+				active = false;
 			}
         }
 	        
