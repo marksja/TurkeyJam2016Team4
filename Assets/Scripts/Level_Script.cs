@@ -16,7 +16,7 @@ public class Level_Script : MonoBehaviour {
 		active_object = start_cannon;
 		camera_offset = camera.transform.position - start_cannon.transform.position;
 		camera.transform.position = active_object.transform.position + camera_offset;
-		start_cannon.GetComponent<CannonRotation>().is_start = true;
+		//start_cannon.GetComponent<CannonRotation>().is_start = true;
 	}
 	
 	// Called when a projectile is launched
