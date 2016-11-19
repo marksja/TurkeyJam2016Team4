@@ -16,6 +16,7 @@ public class Level_Script : MonoBehaviour {
 		active_object = start_cannon;
 		camera_offset = camera.transform.position - start_cannon.transform.position;
 		camera.transform.position = active_object.transform.position + camera_offset;
+		start_cannon.GetComponent<CannonRotation>().is_start = true;
 	}
 	
 	// Called when a projectile is launched
@@ -39,7 +40,7 @@ public class Level_Script : MonoBehaviour {
 				Destroy(active_object);
 			}
 			active_object = start_cannon;
-			start_cannon.GetComponent<CannonRotation>().active = true;	
+			start_cannon.GetComponent<CannonRotation>().active = true;
 			/*if(active object is projectile){
 				remove the instance of the object
 			}*/
