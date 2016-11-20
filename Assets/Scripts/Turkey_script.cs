@@ -3,15 +3,16 @@ using System.Collections;
 
 public class Turkey_script : MonoBehaviour {
     private float angle = 0;
-    private Level_Script l_s;
 
     public AudioClip HitWallSound;
-    public GameObject level;
+    public bool transported = false;
+
+    public 
 
     // Use this for initialization
     void Start () {
-        level = GameObject.Find("Level");
-    }
+	
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,28 +21,39 @@ public class Turkey_script : MonoBehaviour {
     }
 
 	// When the turkey collides with the object
-	void OnCollisionEnter(Collision collision){
-        AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
-    }
-
-    public void OnTriggerEnter(Collider coll)
-    {
-        if (coll.CompareTag("Spike")) {
-            l_s = level.GetComponent<Level_Script>();
-            if (l_s.active_object.name == "Cannon 2.0")
+	void OnTriggerEnter(Collider collision){
+        Vector3 size = collision.bounds.size;
+        Rigidbody rig = GetComponent<Rigidbody>();
+        Vector3 ori_vel = rig.velocity;
+        if (collision.name == "Portal0" && !transported)
+        {
+            if(ori_vel.x >= 0)
             {
-                l_s.active_object.GetComponent<CannonRotation>().active = false;
-            }
-            else if (l_s.active_object.name == "Goal")
-            {
-                //Don't reset since we're at the goal
+                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(size.x, 0, 0);
             }
             else
             {
-                Destroy(l_s.active_object);
+                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(-size.x, 0, 0);
             }
-            l_s.active_object = l_s.start_cannon;
-            l_s.start_cannon.GetComponent<CannonRotation>().active = true;
+            transported = true;
         }
+
+        else if(collision.name == "Portal1" && !transported)
+        {
+            if (ori_vel.x >= 0)
+            {
+                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(size.x, 0, 0);
+            }
+            else
+            {
+                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(-size.x, 0, 0);
+            }
+            gameObject.transform.position = GameObject.Find("Portal0").transform.position;
+            transported = true;
+        }
+        else{
+            AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
+        }
+        rig.velocity = ori_vel;
     }
 }
