@@ -10,7 +10,7 @@ public class black_hole : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		magnitude = 200;
+		magnitude = 300;
 		Physics.gravity = new Vector3(0, -9.8F, 0);
 	}
 	
