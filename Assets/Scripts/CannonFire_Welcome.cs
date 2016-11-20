@@ -13,7 +13,7 @@ public class CannonFire_Welcome : MonoBehaviour {
     public float angle = 0f;
     public GameObject cannon;
     public float x = 7, y = 7, z = 0;
-    private int totalTime = 85;
+    private int totalTime = 84;
     public int timer = 0;
 
     
