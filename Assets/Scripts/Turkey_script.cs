@@ -11,10 +11,11 @@ public class Turkey_script : MonoBehaviour {
     private GameObject level;
     private Level_Script l_s;
 
-    public 
+    private Rigidbody rig; 
 
     // Use this for initialization
     void Start () {
+        rig = GetComponent<Rigidbody>();
         level = GameObject.Find("Level");
 	}
 	
@@ -27,7 +28,7 @@ public class Turkey_script : MonoBehaviour {
 	// When the turkey collides with the object
 	void OnTriggerEnter(Collider collision){
         Vector3 size = collision.bounds.size;
-        Rigidbody rig = GetComponent<Rigidbody>();
+        rig = GetComponent<Rigidbody>();
         Vector3 ori_vel = rig.velocity;
         string name = collision.name;
         int end_letter = 0;
@@ -107,5 +108,9 @@ public class Turkey_script : MonoBehaviour {
     }
     void OnTriggerExit(Collider collider){
         //transported = false;
+    }
+
+    void OnCollisionEnter(Collision collision){
+        rig.velocity = Vector3.zero;
     }
 }
