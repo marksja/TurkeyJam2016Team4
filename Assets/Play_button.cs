@@ -15,6 +15,9 @@ public class Play_button : MonoBehaviour {
 	}
 
 	public void onClick(string level_name){
+		if(level_name == "Quit"){
+			Application.Quit();
+		}
 		SceneManager.LoadScene(level_name);
 	}
 }
