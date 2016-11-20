@@ -19,7 +19,7 @@ public class Oven_Script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && (winScreen.active || Input.GetKeyDown(KeyCode.P)))
         {
             SceneManager.LoadScene(next_level);
         }

@@ -40,10 +40,10 @@ public class CannonRotation : MonoBehaviour
         if (mode == 1 && active)
         {
             if (Input.GetKey(KeyCode.LeftShift)){
-                rotateIncrement = 2;
+                rotateIncrement = 2f;
             }
             else{
-                rotateIncrement = 50;
+                rotateIncrement = 50f;
             }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
