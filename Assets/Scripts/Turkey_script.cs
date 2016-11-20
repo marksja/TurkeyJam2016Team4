@@ -29,31 +29,47 @@ public class Turkey_script : MonoBehaviour {
         Vector3 size = collision.bounds.size;
         Rigidbody rig = GetComponent<Rigidbody>();
         Vector3 ori_vel = rig.velocity;
-        if (collision.name == "Portal0" && !transported)
+        string name = collision.name;
+        int end_letter = 0;
+        string main_bit = name;
+        if(name.Length > 6){
+            end_letter = name[6] - 48;
+            main_bit = name.Substring(0,6);
+        }
+        Debug.Log(main_bit);
+        Debug.Log(end_letter);
+        Debug.Log(name);
+        if (main_bit == "Portal" && end_letter % 2 == 0 && !transported)
         {
+            Debug.Log(main_bit);
+            Debug.Log(end_letter);
+            GameObject portal = GameObject.Find("Portal" + (end_letter+1));
             if(ori_vel.x >= 0)
             {
-                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(size.x, 0, 0);
+                gameObject.transform.position = portal.transform.position + new Vector3(size.x, 0, 0);
             }
             else
             {
-                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(-size.x, 0, 0);
+                gameObject.transform.position = portal.transform.position + new Vector3(-size.x, 0, 0);
             }
             transported = true;
             AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
 
-        else if(collision.name == "Portal1" && !transported)
+        else if(main_bit == "Portal" && end_letter % 2 == 1 && !transported)
         {
+            Debug.Log(main_bit);
+            Debug.Log(end_letter);
+            GameObject portal = GameObject.Find("Portal" + (end_letter-1));
             if (ori_vel.x >= 0)
             {
-                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(size.x, 0, 0);
+                gameObject.transform.position = portal.transform.position + new Vector3(size.x, 0, 0);
             }
             else
             {
-                gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(-size.x, 0, 0);
+                gameObject.transform.position = portal.transform.position + new Vector3(-size.x, 0, 0);
             }
-            gameObject.transform.position = GameObject.Find("Portal0").transform.position;
+            //gameObject.transform.position = GameObject.Find("Portal" + (end_letter-1)).transform.position;
             transported = true;
             AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
@@ -83,5 +99,8 @@ public class Turkey_script : MonoBehaviour {
             l_s.active_object = l_s.start_cannon;
             l_s.start_cannon.GetComponent<CannonRotation>().active = true;
          }
+    }
+    void OnTriggerExit(Collider collider){
+        transported = false;
     }
 }
