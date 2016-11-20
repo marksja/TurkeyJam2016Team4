@@ -19,7 +19,11 @@ public class Oven_Script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
-	}
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SceneManager.LoadScene(next_level);
+        }
+    }
 
 	void OnCollisionEnter(Collision collision){
         //AudioSource.PlayClipAtPoint(TurkeySound, transform.position);

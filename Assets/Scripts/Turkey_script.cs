@@ -5,13 +5,17 @@ public class Turkey_script : MonoBehaviour {
     private float angle = 0;
 
     public AudioClip HitWallSound;
+    public AudioClip PortalSound;
     public bool transported = false;
+
+    private GameObject level;
+    private Level_Script l_s;
 
     public 
 
     // Use this for initialization
     void Start () {
-	
+        level = GameObject.Find("Level");
 	}
 	
 	// Update is called once per frame
@@ -36,6 +40,7 @@ public class Turkey_script : MonoBehaviour {
                 gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(-size.x, 0, 0);
             }
             transported = true;
+            AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
 
         else if(collision.name == "Portal1" && !transported)
@@ -50,10 +55,33 @@ public class Turkey_script : MonoBehaviour {
             }
             gameObject.transform.position = GameObject.Find("Portal0").transform.position;
             transported = true;
+            AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
-        else{
+        else
+        {
             AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
         }
         rig.velocity = ori_vel;
+
+        if (collision.CompareTag("Spike"))
+        {
+            l_s = level.GetComponent<Level_Script>();
+           
+            //Use scale to determine 
+            if (l_s.active_object.name == "Cannon 2.0")
+            {
+                l_s.active_object.GetComponent<CannonRotation>().active = false;
+            }
+            else if (l_s.active_object.name == "Goal")
+            {
+                //Don't reset since we're at the goal
+            }
+            else
+            {
+                Destroy(l_s.active_object);
+            }
+            l_s.active_object = l_s.start_cannon;
+            l_s.start_cannon.GetComponent<CannonRotation>().active = true;
+         }
     }
 }
