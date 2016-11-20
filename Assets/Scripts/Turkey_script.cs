@@ -113,7 +113,7 @@ public class Turkey_script : MonoBehaviour {
     void OnCollisionEnter(Collision collision){
         if (!collision.gameObject.CompareTag("Bouncy"))
         {
-            rig.velocity = Vector3.zero;
+            //rig.velocity = Vector3.zero;
         }
     }
 }
