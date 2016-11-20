@@ -37,60 +37,14 @@ public class CannonRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (mode == 0)
-        {
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 5.23f;
-
-            Vector3 point = Camera.main.WorldToScreenPoint(transform.localPosition);
-            mousePos.x -= point.x;
-            mousePos.y -= point.y;
-
-            angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-            if (Input.GetKeyDown(KeyCode.UpArrow) && active)
-            {
-                if (power < 30)
-                {
-                    power += 2f;
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow) && active)
-            {
-                if (power > 5)
-                {
-                    power -= 2f;
-                }
-            }
-
-            if (Input.GetKey(KeyCode.Space) && active)
-            {
-                Vector3 barrel_vector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
-                barrel_vector.Normalize();
-
-                GameObject projectile = Instantiate(projectile_type);
-                projectile.SetActive(true);
-
-                Rigidbody projectile_physics = projectile.GetComponent<Rigidbody>();
-                projectile.transform.position = transform.position + (barrel_length * barrel_vector);
-                projectile_physics.velocity = barrel_vector * power;
-
-                active = false;
-
-                l_s.New_Location(projectile);
-
-                AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
-                
-            }
-        }
-
-
-
         if (mode == 1 && active)
         {
+            if (Input.GetKey(KeyCode.LeftShift)){
+                rotateIncrement = 2;
+            }
+            else{
+                rotateIncrement = 50;
+            }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 angle += rotateIncrement * Time.deltaTime;
@@ -118,35 +72,7 @@ public class CannonRotation : MonoBehaviour
 				}
 			}
 
-            if (Input.GetKey(KeyCode.Space) && active) {
-                /*shrink = true;
-                int count = 0;
-                while (shrink || grow)
-                { 
-                    if (shrink)
-                    {
-                        scaleX -= changeX;
-                        scaleY -= changeY;
-                        transform.localScale = new Vector2(scaleX, scaleY);
-                        if(count == 40)
-                        {
-                            grow = true;
-                            shrink = false;
-                        }
-                    }
-
-                    if (grow)
-                    {
-                        scaleX += changeX;
-                        scaleY += changeY;
-                        transform.localScale = new Vector2(scaleX, scaleY);
-                        if (count == 80)
-                        {
-                            grow = false;
-                        }
-                    }
-                    count++;
-                }*/
+            if (Input.GetKey(KeyCode.Space)) {
 
                 Vector3 barrel_vector = new Vector3 (Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
                 barrel_vector.Normalize();
@@ -161,24 +87,6 @@ public class CannonRotation : MonoBehaviour
 				active = false;
 
                 l_s.New_Location(projectile);
-
-                /*Cannon Shake
-                bool up = true;
-                float timer = 0;
-                if (timer <= 10)
-                {
-                    if (up)
-                    {
-                        transform.Translate(0, 0.5f, 0, Camera.main.transform);
-                        up = false;
-                    }
-                    if (!up)
-                    {
-                        transform.Translate(0, -0.5f, 0, Camera.main.transform);
-                        up = true;
-                    }
-                    timer += Time.deltaTime;
-                }*/
 
                 AudioSource.PlayClipAtPoint(cannonshotSound, transform.position);
             }
