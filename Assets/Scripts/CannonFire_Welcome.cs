@@ -13,18 +13,25 @@ public class CannonFire_Welcome : MonoBehaviour {
     public float angle = 0f;
     public GameObject cannon;
     public float x = 7, y = 7, z = 0;
+    private int totalTime = 85;
+    public int timer = 0;
 
     
 
     // Use this for initialization
     void Awake () {
 	    angle = cannon.transform.localEulerAngles.z;
-	}
+        timer = (int)(Random.value * 60) + 85;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Space))
+        totalTime += 1;
+        if (totalTime % timer == 0)
         {
+            timer = (int)(Random.value * 60) + 85;
+            totalTime = 0;
             Vector3 barrel_vector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0);
             barrel_vector.Normalize();
 
@@ -38,6 +45,9 @@ public class CannonFire_Welcome : MonoBehaviour {
             projectile_physics.velocity = barrel_vector * power;
 
             // active = false;
+
+            Destroy(projectile, 10);
+
 
             // level.GetComponent<Level_Script>().New_Location(projectile);
 
