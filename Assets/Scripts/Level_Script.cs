@@ -9,6 +9,8 @@ public class Level_Script : MonoBehaviour {
 
 	public GameObject camera;
 
+    public int levelNumber;
+
 	private Vector3 camera_offset;
 
     public Texture bar;
@@ -31,6 +33,15 @@ public class Level_Script : MonoBehaviour {
 
     public void OnGUI()
     {
+        GUIStyle style = new GUIStyle(GUI.skin.GetStyle("label"));
+        style.fontSize = 26;
+        style.normal.textColor = Color.black;
+        style.fontStyle = FontStyle.Bold;
+
+        GUI.Label(new Rect(Screen.width - 110, 10, 100, 40), "Level " + levelNumber, style);
+        style.normal.textColor = Color.white;
+        GUI.Label(new Rect(Screen.width - 112, 8, 100, 40), "Level " + levelNumber, style);
+
         if (active_object.name == "Cannon 2.0")
         {
             GUI.DrawTexture(new Rect(Screen.width / 2 - 32 - camera_offset.x, (Screen.height / 2) + 30 - camera_offset.y, (active_object.GetComponent<CannonRotation>().power - 4) * 2, 10), bar);
