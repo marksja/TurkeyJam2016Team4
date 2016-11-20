@@ -44,13 +44,16 @@ public class Turkey_script : MonoBehaviour {
             Debug.Log(main_bit);
             Debug.Log(end_letter);
             GameObject portal = GameObject.Find("Portal" + (end_letter+1));
-            if(ori_vel.x >= 0)
+            if (ori_vel.x >= 1)
             {
                 gameObject.transform.position = portal.transform.position + new Vector3(size.x, 0, 0);
             }
-            else
+            else if (ori_vel.x <= -1)
             {
                 gameObject.transform.position = portal.transform.position + new Vector3(-size.x, 0, 0);
+            }
+            else{
+                gameObject.transform.position = portal.transform.position;
             }
             transported = true;
             AudioSource.PlayClipAtPoint(PortalSound, transform.position);
@@ -61,15 +64,17 @@ public class Turkey_script : MonoBehaviour {
             Debug.Log(main_bit);
             Debug.Log(end_letter);
             GameObject portal = GameObject.Find("Portal" + (end_letter-1));
-            if (ori_vel.x >= 0)
+            if (ori_vel.x >= 1)
             {
                 gameObject.transform.position = portal.transform.position + new Vector3(size.x, 0, 0);
             }
-            else
+            else if (ori_vel.x <= -1)
             {
                 gameObject.transform.position = portal.transform.position + new Vector3(-size.x, 0, 0);
             }
-            //gameObject.transform.position = GameObject.Find("Portal" + (end_letter-1)).transform.position;
+            else{
+                gameObject.transform.position = portal.transform.position;
+            }
             transported = true;
             AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
@@ -101,6 +106,6 @@ public class Turkey_script : MonoBehaviour {
          }
     }
     void OnTriggerExit(Collider collider){
-        transported = false;
+        //transported = false;
     }
 }
