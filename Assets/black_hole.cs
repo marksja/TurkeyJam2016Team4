@@ -10,7 +10,6 @@ public class black_hole : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		magnitude = 100;
 	}
 	
 	// Update is called once per frame
