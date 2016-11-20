@@ -10,8 +10,7 @@ public class black_hole : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		magnitude = 300;
-		Physics.gravity = new Vector3(0, -9.8F, 0);
+		magnitude = 100;
 	}
 	
 	// Update is called once per frame
@@ -21,17 +20,13 @@ public class black_hole : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		direction_to_player = transform.position - other.gameObject.transform.position;
 		direction_to_player.Normalize();
-		Physics.gravity = direction_to_player * magnitude;
+		other.gameObject.GetComponent<Rigidbody>().AddForce(direction_to_player * magnitude);
 		Debug.Log("Hello World");
 	}
 	void OnTriggerStay(Collider other){
 		direction_to_player = transform.position - other.gameObject.transform.position;
 		direction_to_player.Normalize();
-		Physics.gravity = direction_to_player * magnitude;
+		other.gameObject.GetComponent<Rigidbody>().AddForce(direction_to_player * magnitude);
 		Debug.Log("Hello World");
-	}
-	void OnTriggerExit(Collider other){
-		Physics.gravity = new Vector3(0, -9.8F, 0);
-		Debug.Log("Noope");
 	}
 }
