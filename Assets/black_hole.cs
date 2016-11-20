@@ -20,12 +20,10 @@ public class black_hole : MonoBehaviour {
 		direction_to_player = transform.position - other.gameObject.transform.position;
 		direction_to_player.Normalize();
 		other.gameObject.GetComponent<Rigidbody>().AddForce(direction_to_player * magnitude);
-		Debug.Log("Hello World");
 	}
 	void OnTriggerStay(Collider other){
 		direction_to_player = transform.position - other.gameObject.transform.position;
 		direction_to_player.Normalize();
 		other.gameObject.GetComponent<Rigidbody>().AddForce(direction_to_player * magnitude);
-		Debug.Log("Hello World");
 	}
 }
