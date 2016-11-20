@@ -5,6 +5,7 @@ public class Turkey_script : MonoBehaviour {
     private float angle = 0;
 
     public AudioClip HitWallSound;
+    public AudioClip PortalSound;
     public bool transported = false;
 
     public 
@@ -36,6 +37,7 @@ public class Turkey_script : MonoBehaviour {
                 gameObject.transform.position = GameObject.Find("Portal1").transform.position + new Vector3(-size.x, 0, 0);
             }
             transported = true;
+            AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
 
         else if(collision.name == "Portal1" && !transported)
@@ -50,6 +52,7 @@ public class Turkey_script : MonoBehaviour {
             }
             gameObject.transform.position = GameObject.Find("Portal0").transform.position;
             transported = true;
+            AudioSource.PlayClipAtPoint(PortalSound, transform.position);
         }
         else{
             AudioSource.PlayClipAtPoint(HitWallSound, transform.position);
